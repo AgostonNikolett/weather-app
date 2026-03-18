@@ -16,20 +16,26 @@ const WeatherApp = () => {
             return;
         }
 
-        const data = await fetchWeatherData(query);
+        try {
+            const data = await fetchWeatherData(query);
 
-        if (!data) {
-            setMsg("City not found.");
-            return;
+            if (!data) {
+                setMsg("City not found.");
+                return;
+            }
+
+            if (cities.some((item) => item.id === data.id)) {
+                setMsg("You already searched for this city.");
+                setQuery("");
+                return;
+            }
+
+            setCities([data, ...cities]);
+            setQuery("");
+        } catch (error) {
+            console.error("Error fetching weather data:", error);
+            setMsg("An error occurred while fetching weather data. Please try again later.");
         }
-
-        if (cities.some((item) => item.id === data.id)) {
-            setMsg("You already searched for this city.");
-            return;
-        }
-
-        setCities([data, ...cities]);
-        setQuery("");
     };
 
     const removeCity = (id, name) => {
