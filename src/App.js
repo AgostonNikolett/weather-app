@@ -3,7 +3,6 @@ import { fetchWeatherData } from "./api";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import ErrorMessage from "./components/ErrorMessage";
-import "./App.css";
 
 const App = () => {
     const [query, setQuery] = useState("");
