@@ -1,58 +1,22 @@
-/* RESET STYLES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 1. Resetare și Variabile Globale */
 :root {
-    --bg_main: #0a1f44;
-    --text_light: #fff;
-    --text_med: #53627c;
-    --text_dark: #1e2432;
-    --red: #ff1e42;
-    --darkred: #c3112d;
-    --orange: #ff8c00;
+    --primary-color: #ff1e42;
+    --text-color: #1e2432;
+    --bg-color: #f1f1f1;
+    --white: #ffffff;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-weight: normal;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    cursor: pointer;
-}
-
-input {
-    -webkit-appearance: none;
-}
-
-button,
-input {
-    border: none;
-    background: none;
-    outline: none;
-    color: inherit;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-}
-
-ul {
-    list-style: none;
 }
 
 body {
-    font: 1rem/1.3 "Roboto", sans-serif;
-    background: var(--bg_main);
-    color: var(--text_dark);
-    padding: 70px;
+    font-family: "Open Sans", sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
 }
 
 .container {
@@ -62,321 +26,128 @@ body {
     padding: 0 15px;
 }
 
-.msg {
-    display: block;
-    margin-top: 10px;
-    color: #ff4d4d;
-    font-weight: bold;
-    min-height: 20px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-}
-
-/* SECTION #1
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 2. Top Banner & Search Section */
 .top-banner {
-    color: var(--text_light);
+    background: var(--text-color);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
 }
 
 .heading {
-    font-weight: bold;
-    font-size: 4rem;
-    letter-spacing: 0.02em;
-    padding: 0 0 30px 0;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
-.top-banner form {
-    position: relative;
+form {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.top-banner form input {
-    font-size: 2rem;
-    height: 40px;
-    padding: 5px 5px 10px;
-    border-bottom: 1px solid;
+form input {
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 300px;
 }
 
-.top-banner form input::placeholder {
-    color: currentColor;
-}
-
-.top-banner form button {
+form button {
+    padding: 10px 20px;
     font-size: 1rem;
     font-weight: bold;
-    letter-spacing: 0.1em;
-    padding: 15px 20px;
-    margin-left: 15px;
+    background: var(--primary-color);
+    color: var(--white);
+    border: none;
     border-radius: 5px;
-    background: var(--red);
-    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-.top-banner form button:hover {
-    background: var(--darkred);
+form button:hover {
+    background: #e61b3b;
 }
 
-.top-banner form .msg {
-    position: absolute;
-    bottom: -40px;
-    left: 0;
-    max-width: 450px;
-    min-height: 40px;
+/* 3. Mesaje de Eroare */
+.error-msg {
+    display: block;
+    margin-top: 15px;
+    color: #ffcfd6;
+    font-weight: bold;
 }
 
-/* Voice Search Button */
-.voice-btn {
-    font-size: 1.5rem;
-    margin-left: 10px;
-    background: #004aad;
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: white;
-}
-
-.voice-btn:hover {
-    background: #003370;
-}
-
-/* SECTION #2
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 4. Grid-ul de Orașe (Ajax Section) */
 .ajax-section {
-    margin: 70px 0 20px;
+    padding: 50px 0;
 }
 
-.ajax-section .cities {
+.cities {
     display: grid;
-    grid-gap: 32px 20px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+    list-style: none;
 }
 
-.ajax-section .city {
+/* 5. Stiluri Card (WeatherCard) */
+.city {
     position: relative;
     padding: 40px 10%;
     border-radius: 20px;
-    background: var(--text_light);
-    color: var(--text_med);
+    background: var(--white);
+    color: var(--text-color);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
 }
 
-.ajax-section .city::after {
-    content: '';
-    width: 90%;
-    height: 50px;
-    position: absolute;
-    bottom: -12px;
-    left: 5%;
-    z-index: -1;
-    opacity: 0.3;
+.city-name {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.city-name sup {
+    padding: 0.2em 0.6em;
+    margin-left: 5px;
     border-radius: 20px;
-    background: var(--text_light);
-}
-
-.ajax-section figcaption {
-    margin-top: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.ajax-section .city-temp {
-    font-size: 5rem;
-    font-weight: bold;
-    margin-top: 10px;
-    color: var(--text_dark);
-}
-
-.ajax-section .city sup {
+    color: var(--white);
+    background: #ff8c00;
     font-size: 0.5em;
 }
 
-.ajax-section .city-name sup {
-    padding: 0.2em 0.6em;
-    border-radius: 30px;
-    color: var(--text_light);
-    background: #004aad;
+.city-temp {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
-.ajax-section .city-icon {
-    margin-top: 10px;
+.city-icon {
     width: 100px;
     height: 100px;
 }
 
-/* Delete button
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* 6. Butoane Acțiuni Card */
 .delete-btn {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 2rem;
     background: none;
-    color: var(--red);
     border: none;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: 0.2s;
+    color: #ccc;
 }
 
 .delete-btn:hover {
-    color: var(--darkred);
-    transform: scale(1.2);
+    color: var(--primary-color);
 }
 
-/* Speak buttons */
 .speak-btn {
-    font-size: 1.5rem;
-    background: #004aad;
-    color: white;
+    background: none;
     border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 1.2rem;
     cursor: pointer;
-}
-
-.speak-btn:hover {
-    background: #003370;
-}
-
-.city-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Accessibility Toggle
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-.accessibility-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #004aad;
-    color: white;
-    padding: 12px 18px;
-    border-radius: 10px;
-    font-size: 1rem;
-    z-index: 9999;
-    cursor: pointer;
-}
-
-.accessibility-toggle:hover {
-    background: #003370;
-}
-
-.accessibility-toggle:focus-visible {
-    outline: 3px solid yellow;
-}
-
-/* === ACCESSIBLE MODE STYLES === */
-.accessible-mode {
-    font-family: 'Lexend', sans-serif !important;
-    font-size: 1.3rem !important;
-    line-height: 1.6;
-}
-
-/* Bigger cards */
-.accessible-mode .city {
-    padding: 60px 14%;
-    font-size: 1.3rem;
-}
-
-/* Larger icons */
-.accessible-mode .city-icon {
-    width: 150px;
-    height: 150px;
-}
-
-/* Larger titles */
-.accessible-mode .city-name {
-    font-size: 2rem;
-    font-weight: 700;
-    color: black;
-}
-
-/* High-contrast temperature */
-.accessible-mode .city-temp {
-    font-size: 5rem;
-    color: black !important;
-}
-
-/* Bigger speak button */
-.accessible-mode .speak-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 2rem;
-    background: #ff8c00;
-}
-
-.accessible-mode .speak-btn:hover {
-    background: #cc6e00;
-}
-
-/* More spacing */
-.accessible-mode .city-header {
-    gap: 20px;
-}
-
-/* MQ
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
-@media screen and (max-width: 1000px) {
-    body {
-        padding: 30px;
-    }
-
-    .ajax-section .cities {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media screen and (max-width: 700px) {
-    .heading,
-    .ajax-section .city-temp {
-        font-size: 3rem;
-    }
-
-    .ajax-section {
-        margin-top: 20px;
-    }
-
-    .top-banner form {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .top-banner form input,
-    .top-banner form button,
-    .voice-btn {
-        width: 100%;
-    }
-
-    .top-banner form button {
-        margin: 20px 0 0 0;
-    }
-
-    .voice-btn {
-        margin-left: 0;
-        margin-top: 10px;
-    }
-
-    .top-banner form .msg {
-        position: static;
-        max-width: none;
-        min-height: 0;
-        margin-top: 10px;
-    }
-
-    .ajax-section .cities {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 500px) {
-    body {
-        padding: 15px;
-    }
-
-    .ajax-section .cities {
-        grid-template-columns: repeat(1, 1fr);
-    }
+    margin-bottom: 5px;
 }
