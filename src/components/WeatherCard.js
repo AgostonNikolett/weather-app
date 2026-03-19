@@ -26,7 +26,7 @@ const WeatherCard = ({ city, onRemove, onSpeak }) => {
             <figure>
                 <img
                     className="city-icon"
-                    src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+                    src={`https://openweathermap.org/img/wn/${city.weather[0].icon}@4x.png`}
                     alt={city.weather[0].description}
                 />
                 <figcaption>{city.weather[0].description}</figcaption>

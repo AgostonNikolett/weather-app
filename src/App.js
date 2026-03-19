@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchWeatherData } from "./api";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
@@ -6,8 +6,30 @@ import ErrorMessage from "./components/ErrorMessage";
 
 const App = () => {
     const [query, setQuery] = useState("");
-    const [cities, setCities] = useState([]);
+    const [cities, setCities] = useState(() => {
+        const savedCities = localStorage.getItem("weatherCities");
+        return savedCities ? JSON.parse(savedCities) : [];
+    });
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        localStorage.setItem("weatherCities", JSON.stringify(cities));
+
+        if (cities.length > 0) {
+            const mainWeather = cities[0].weather[0].main.toLowerCase();
+
+            document.body.className = "";
+
+            if (mainWeather.includes("clear")) document.body.classList.add("sunny");
+            else if (mainWeather.includes("cloud")) document.body.classList.add("cloudy");
+            else if (mainWeather.includes("rain") || mainWeather.includes("drizzle")) document.body.classList.add("rainy");
+            else if (mainWeather.includes("snow")) document.body.classList.add("snowy");
+            else if (mainWeather.includes("mist") || mainWeather.includes("fog")) document.body.classList.add("mist");
+            else document.body.classList.add("default");
+        } else {
+            document.body.className = "default";
+        }
+    }, [cities]);
 
     const handleSearch = async (e) => {
         e.preventDefault();
