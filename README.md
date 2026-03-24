@@ -19,7 +19,7 @@ A modern web application for checking real-time weather conditions, built with *
     * **Voice Input**: Search for cities using voice commands (🎤).
 * **Persistence**: Your searched cities remain saved even after refreshing the page.
 
-## 🧠 Key Learnings & Refactoring
+## 🧠 What I Learned
 During the development of this project, I focused on:
 * **Component-Based Architecture**: Breaking down the code into logical units such as `SearchBar`, `WeatherCard`, `Forecast`, and `ErrorMessage`.
 * **Error Handling**: Managing cases where a city is not found or network issues occur.
@@ -27,7 +27,7 @@ During the development of this project, I focused on:
 * **Clean Code**: Removing redundant files and organizing global styles within `index.css`.
 
 ## 🏁 How to Run Locally
-1. Clone the repository: git clone https://github.com/AgostonNikolett/weather-app.git
+1. Clone the repository: `git clone https://github.com/AgostonNikolett/weather-app.git`
 2. Install dependencies: npm install
 3. Create a `.env` file in the root directory and add your OpenWeatherMap API key: `REACT_APP_WEATHER_API_KEY=YOUR_API_KEY`
 4. Start the app: npm start
