@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchWeatherData } from "./api";
+import {fetchForecastData, fetchWeatherData} from "./api";
 import SearchBar from "./components/SearchBar";
 import WeatherCard from "./components/WeatherCard";
 import ErrorMessage from "./components/ErrorMessage";
@@ -41,14 +41,19 @@ const App = () => {
         }
 
         try {
-            const data = await fetchWeatherData(query);
+            const [currentData, forecast] = await Promise.all([
+                fetchWeatherData(query),
+                fetchForecastData(query)
+            ]);
 
-            if (cities.some((city) => city.id === data.id)) {
+            if (cities.some((city) => city.id === currentData.id)) {
                 setError("You already searched for this city.");
                 return;
             }
 
-            setCities( [data, ...cities]);
+            // const newCityEntry = { ...currentData, forecast: forecastData };
+            const newCityEntry = { ...currentData, forecast };
+            setCities( [newCityEntry, ...cities]);
             setQuery("");
         } catch (error) {
             setError(error.message === "city not found" ? "City not found." : "An error occurred. Please try again later.");

@@ -1,4 +1,5 @@
 import React from 'react';
+import Forecast from './Forecast';
 
 const WeatherCard = ({ city, onRemove, onSpeak }) => {
     return (
@@ -31,6 +32,7 @@ const WeatherCard = ({ city, onRemove, onSpeak }) => {
                 />
                 <figcaption>{city.weather[0].description}</figcaption>
             </figure>
+            {city.forecast && <Forecast forecastData={city.forecast} />}
         </li>
     );
 };
