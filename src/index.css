@@ -159,6 +159,29 @@ figcaption {
     letter-spacing: 0.5px;
 }
 
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.forecast-item {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.forecast-date {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.forecast-temp {
+    font-size: 0.9rem;
+}
+
 /* 6. Butoane Acțiuni Card */
 .delete-btn {
     position: absolute;
